@@ -64,4 +64,6 @@ Twitch is a live streaming platform consisting of thousands of different streame
 * game_name -> genre, total_current_viewers, popularity_rank
 * chat_ID -> number_of_chatters, unique_messages
 
+## Decomposition into BCNF Form
+
 
