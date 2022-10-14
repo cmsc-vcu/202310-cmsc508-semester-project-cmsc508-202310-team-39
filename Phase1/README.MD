@@ -18,3 +18,7 @@ Twitch is a live streaming platform consisting of thousands of different streame
 * What was the most common language spoken in each stream?
 * Display a list of each streamer’s age and their number of followers
 * Find the median number of characters in each streamers’ name
+
+##ER Diagram
+
+![alt text][https://github.com/cmsc-vcu/202310-cmsc508-semester-project-cmsc508-202310-team-39/blob/main/Phase1/twitch_er_diagram.pdf]
