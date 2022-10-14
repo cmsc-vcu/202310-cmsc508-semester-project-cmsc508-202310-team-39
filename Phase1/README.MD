@@ -19,6 +19,6 @@ Twitch is a live streaming platform consisting of thousands of different streame
 * Display a list of each streamer’s age and their number of followers
 * Find the median number of characters in each streamers’ name
 
-##ER Diagram
+## ER Diagram
 
-![alt text][https://github.com/cmsc-vcu/202310-cmsc508-semester-project-cmsc508-202310-team-39/blob/main/Phase1/twitch_er_diagram.pdf]
+![alt text][https://github.com/cmsc-vcu/202310-cmsc508-semester-project-cmsc508-202310-team-39/blob/515b18320a5565a09a7267a502f45f5b85e6104b/Phase1/erdiagram.jpg]
