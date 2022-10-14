@@ -37,8 +37,10 @@ Twitch is a live streaming platform consisting of thousands of different streame
 * Relations, Attributes, and Types: 
   - Streamer(name (varchar), follower_count (integer), subscriber_count(integer), account_creation_date(DateTime), partner_status(boolean))
     -  Example Domain: xqc, 10,000,000, 50,000, 08/20/2016, True
+    -  Primary Keys and Foreign Keys: name, n/a
   - Streamer_Fact_Table(streamer_name (varchar), stream_code (integer), category_code (integer), chat_code (integer))
     - Example Domain: xqc, 1, 1, 1
+    - Primary Keys and Foreign Keys: , streamer_name
   - Stream(stream_code (integer), title (varchar), avg_viewers (float), peak_viewers (integer), followers_gained (integer), subscribers_gained (integer), language (varchar))
     - Example Domain: 1, WELCOME TO THE STREAM, 70,000.234, 100,000, 10,000, 1,000, English
   - Category(category_code (integer), name (varchar), position (integer), avg_viewers (float), peak_viewers (integer), start_code (integer), game_code (integer))
