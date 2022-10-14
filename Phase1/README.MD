@@ -26,8 +26,13 @@ Twitch is a live streaming platform consisting of thousands of different streame
 ## Translation of the ERD into the relational model as relational schemas
 
 * Relations, Attributes, and Types: 
-  - Streamer(name (varchar), follower_count (integer), subscriber_count(integer), account_creation_date(char), partner_status(boolean))
-* Types:
+  - Streamer(name (varchar), follower_count (integer), subscriber_count(integer), account_creation_date(DateTime), partner_status(boolean))
+  - Streamer_Fact_Table(streamer_name (varchar), stream_code (integer), category_code (integer), chat_code (integer))
+  - Stream(stream_code (integer), title (varchar), avg_viewers (float), peak_viewers (integer), followers_gained (integer), subscribers_gained (integer), language (varchar))
+  - Category(category_code (integer), name (varchar), position (integer), avg_viewers (float), peak_viewers (integer), start_code (integer), game_code (integer))
+  - Category_Time(category_start_code (integer), start_time (char), duration (char))
+  - game(game_code (integer), genre (varchar), total_viewers (integer), popularity_rank (integer)
+  - chat(chat_code (integer), number_of_chatters (integer), unique_messages (integer))
 * Domain:
 * Constraints:
 * Primary Keys:
