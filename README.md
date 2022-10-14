@@ -5,7 +5,7 @@
 
 | Team Member | VCU email          | Github Username |
 | ----------- | ------------------ | --------------- |
-| Luke        | untermanlm@vcu.edu | untermanlm      |
-| Blue        | arevaloh@vcu.edu   | bluearevalo     |
+| Luke Unterman        | untermanlm@vcu.edu | untermanlm      |
+| Blue Arevalo        | arevaloh@vcu.edu   | bluearevalo     |
 
 ** Description of structure of repository
