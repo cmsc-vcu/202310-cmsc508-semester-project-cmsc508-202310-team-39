@@ -43,6 +43,7 @@ Twitch is a live streaming platform consisting of thousands of different streame
     - Primary Keys and Foreign Keys: , streamer_name
   - Stream(stream_code (integer), title (varchar), avg_viewers (float), peak_viewers (integer), followers_gained (integer), subscribers_gained (integer), language (varchar))
     - Example Domain: 1, WELCOME TO THE STREAM, 70,000.234, 100,000, 10,000, 1,000, English
+    - Primary Keys and Foreign Keys: title, stream_code
   - Category(category_code (integer), name (varchar), position (integer), avg_viewers (float), peak_viewers (integer), start_code (integer), game_code (integer))
     - Example Domain: 1, Just Chatting, 1, 70,000, 85,000, 2, 2
   - Category_Time(category_start_code (integer), start_time (char), duration (char))
