@@ -60,8 +60,8 @@ Twitch is a live streaming platform consisting of thousands of different streame
 
 * streamer_name -> follower_count, subscriber_count, account_creation_date, partner_status
 * streamer_name, start_date -> title, avg_viewers, peak_viewers, followers_gained, subscribers_gained, language
-* category_name ->  position, avg_viewers, peak_viewers, start_time, duration
-* game_name -> genre, total_current_viewers, popularity_rank
+* category_name ->  position, avg_category_viewers, peak_category_viewers, start_time, duration
+* game_name -> genre, total_current_game_viewers, popularity_rank
 * chat_ID -> number_of_chatters, unique_messages
 
 ## Decomposition into BCNF Form
