@@ -21,4 +21,4 @@ Twitch is a live streaming platform consisting of thousands of different streame
 
 ## ER Diagram
 
-![alt text][https://github.com/cmsc-vcu/202310-cmsc508-semester-project-cmsc508-202310-team-39/blob/515b18320a5565a09a7267a502f45f5b85e6104b/Phase1/erdiagram.jpg]
+![erdiagram](https://user-images.githubusercontent.com/80475070/195927966-020bc3cb-9c63-4217-8984-c900162a3b8d.jpg)
