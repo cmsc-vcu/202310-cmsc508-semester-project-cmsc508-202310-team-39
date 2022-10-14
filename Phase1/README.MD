@@ -5,7 +5,7 @@ Twitch is a live streaming platform consisting of thousands of different streame
 
 ## Queries
 
-*  Display a list of each streamer and their most streamed Twitch category
+* Display a list of each streamer and their most streamed Twitch category
 * Who are the top 5 streamers with the highest concurrent viewers?
 * What was the number of characters on average in streamers’ stream titles?
 * Which streamer has the most subscriptions per average view count?
@@ -18,6 +18,10 @@ Twitch is a live streaming platform consisting of thousands of different streame
 * What was the most common language spoken in each stream?
 * Display a list of each streamer’s age and their number of followers
 * Find the median number of characters in each streamers’ name
+* Which state was the most popular for Twitch streamers to stream from? 
+* What was the oldest game streamed?
+* Which game was most commonly streamed? 
+
 
 ## ER Diagram
 
