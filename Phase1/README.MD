@@ -35,7 +35,7 @@ Twitch is a live streaming platform consisting of thousands of different streame
 
 ## Translation of the ERD into the relational model as relational schemas
 
-* Relations, Attributes, and Types: 
+* Relational Schemas:
   - Streamer(name (varchar), follower_count (integer), subscriber_count(integer), account_creation_date(DateTime), partner_status(boolean))
     -  Example Domain: xqc, 10,000,000, 50,000, 08/20/2016, True
     -  Primary Keys and Foreign Keys: name, n/a
