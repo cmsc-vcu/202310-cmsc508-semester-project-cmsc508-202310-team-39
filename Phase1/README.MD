@@ -26,7 +26,7 @@ Twitch is a live streaming platform consisting of thousands of different streame
 ## Translation of the ERD into the relational model as relational schemas
 
 * Relations, Attributes, and Types: 
-- Streamer(name (varchar), follower_count (integer), subscriber_count(integer), account_creation_date(char), partner_status(boolean))
+  - Streamer(name (varchar), follower_count (integer), subscriber_count(integer), account_creation_date(char), partner_status(boolean))
 * Types:
 * Domain:
 * Constraints:
