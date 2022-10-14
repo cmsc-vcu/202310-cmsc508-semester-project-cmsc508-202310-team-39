@@ -8,4 +8,4 @@
 | Luke Unterman        | untermanlm@vcu.edu | untermanlm      |
 | Blue Arevalo        | arevaloh@vcu.edu   | bluearevalo     |
 
-** Description of structure of repository
+## Description of structure of repository
