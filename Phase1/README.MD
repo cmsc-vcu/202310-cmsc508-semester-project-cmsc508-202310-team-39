@@ -22,3 +22,14 @@ Twitch is a live streaming platform consisting of thousands of different streame
 ## ER Diagram
 
 ![erdiagram](https://user-images.githubusercontent.com/80475070/195927966-020bc3cb-9c63-4217-8984-c900162a3b8d.jpg)
+
+## Translation of the ERD into the relational model as relational schemas
+
+* Relations and Attributes:
+* Types:
+* Domain:
+* Constraints:
+* Primary Keys:
+* Foreign Keys:
+
+
