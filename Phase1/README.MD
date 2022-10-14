@@ -30,7 +30,8 @@ Twitch is a live streaming platform consisting of thousands of different streame
 
 ## ER Diagram
 
-![erdiagram](https://user-images.githubusercontent.com/80475070/195927966-020bc3cb-9c63-4217-8984-c900162a3b8d.jpg)
+![erdiagram2](https://user-images.githubusercontent.com/80475070/195950223-12391d59-ddd7-4f3c-b98a-e39e114b9cbc.png)
+
 
 ## Translation of the ERD into the relational model as relational schemas
 
@@ -38,22 +39,24 @@ Twitch is a live streaming platform consisting of thousands of different streame
   - Streamer(name (varchar), follower_count (integer), subscriber_count(integer), account_creation_date(DateTime), partner_status(boolean))
     -  Example Domain: xqc, 10,000,000, 50,000, 08/20/2016, True
     -  Primary Keys and Foreign Keys: name, n/a
-  - Streamer_Fact_Table(streamer_name (varchar), stream_code (integer), category_code (integer), chat_code (integer))
+  - Streamer_Fact_Table(streamer_name (varchar), stream_code (integer), category_code (integer))
     - Example Domain: xqc, 1, 1, 1
-    - Primary Keys and Foreign Keys: , streamer_name
-  - Stream(stream_code (integer), title (varchar), avg_viewers (float), peak_viewers (integer), followers_gained (integer), subscribers_gained (integer), language (varchar))
-    - Example Domain: 1, WELCOME TO THE STREAM, 70,000.234, 100,000, 10,000, 1,000, English
-    - Primary Keys and Foreign Keys: title, stream_code
+    - Primary Keys and Foreign Keys: streamer_name(same)
+  - Stream(stream_code (integer), title (varchar), avg_viewers (float), peak_viewers (integer), followers_gained (integer), subscribers_gained (integer), language (varchar), start_date(DateTime), chat_code (integer))
+    - Example Domain: 1, WELCOME TO THE STREAM, 70,000.234, 100,000, 10,000, 1,000, English, 10/14/2022, 1)
+    - Primary Keys and Foreign Keys: {title, start_date}, stream_code
   - Category(category_code (integer), name (varchar), position (integer), avg_viewers (float), peak_viewers (integer), start_code (integer), game_code (integer))
     - Example Domain: 1, Just Chatting, 1, 70,000, 85,000, 2, 2
+    - Primary Keys and Foreign Keys: name, category_code
   - Category_Time(category_start_code (integer), start_time (char), duration (char))
     - Example Domain: 2, 8:00:00 PM, 4 hrs
-  - game(game_code (integer), genre (varchar), total_viewers (integer), popularity_rank (integer)
-    - 2, Adventure, 100,000, 4
-  - chat(chat_code (integer), number_of_chatters (integer), unique_messages (integer))
-    - Example Domain: 1, 20,000, 40,000
+    - Primary Keys and Foreign Keys: start_time, start_code
+  - game(game_code (integer), genre (varchar), total_viewers (integer), popularity_rank (integer), game_name(varchar))
+    - 2, Adventure, 100,000, 4, Minecraft
+    - Primary Keys and Foreign Keys: game_name, game_code
+  - chat(chat_code (integer), number_of_chatters (integer), unique_messages (integer), name (varchar))
+    - Example Domain: 1, 20,000, 40,000, xQc's Chat
+    - Primary Keys and Foreign Keys: name, chat_code
 * Constraints:
-* Primary Keys:
-* Foreign Keys:
 
 
