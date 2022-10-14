@@ -49,7 +49,6 @@ Twitch is a live streaming platform consisting of thousands of different streame
     - 2, Adventure, 100,000, 4
   - chat(chat_code (integer), number_of_chatters (integer), unique_messages (integer))
     - Example Domain: 1, 20,000, 40,000
-* Domain:
 * Constraints:
 * Primary Keys:
 * Foreign Keys:
