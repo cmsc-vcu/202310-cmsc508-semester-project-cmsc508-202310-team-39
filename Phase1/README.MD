@@ -78,6 +78,15 @@ Since all nonprime fields within the previously listed relational schema are dep
 | pokimane | 9,244,000       | 3,271             | 6/7/2013                | TRUE            |
 | hasanabi | 2,240,000       | 19,628            | 3/23/2018               | TRUE            |
 
+### Stream
+
+| Streamer\_Name | Start\_Date           | Title                   | Avg\_Viewers | Peak\_Viewers | Followers\_Gained | Subscribers\_Gained | Language |
+| -------------- | --------------------- | ----------------------- | ------------ | ------------- | ----------------- | ------------------- | -------- |
+| xqc            | 10/12/2022 2:30:00 AM | Welcome to the stream   | 76,000       | 100,000       | 23,000            | 1,000               | English  |
+| pokimane       | 10/11/2022 5:00:00 PM | Cozy stream today       | 16,000       | 20,000        | 1,000             | 250                 | English  |
+| hasnabi        | 10/14/2022 6:00:00 PM | Political content today | 30,000       | 40,000        | 4,000             | 500                 | English  |
+
+
 
 
 
