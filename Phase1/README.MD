@@ -86,7 +86,7 @@ Since all nonprime fields within the previously listed relational schema are dep
 | pokimane       | 10/11/2022 5:00:00 PM | Cozy stream today       | 16,000       | 20,000        | 1,000             | 250                 | English  |
 | hasnabi        | 10/14/2022 6:00:00 PM | Political content today | 30,000       | 40,000        | 4,000             | 500                 | English  |
 
-## Category
+### Category
 
 
 
