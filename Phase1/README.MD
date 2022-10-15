@@ -96,5 +96,11 @@ Since all nonprime fields within the previously listed relational schema are dep
 
 ### Game
 
+| Game\_Name        | Genre     | Total\_Current\_Viewers | Popularity\_Rank |
+| ----------------- | --------- | ----------------------- | ---------------- |
+| Minecraft         | Adventure | 100,000                 | 3                |
+| World of Warcraft | MMORPG    | 200,000                 | 2                |
+
+### Chat
 
 
