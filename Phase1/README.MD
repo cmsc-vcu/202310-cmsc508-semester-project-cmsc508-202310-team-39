@@ -88,7 +88,13 @@ Since all nonprime fields within the previously listed relational schema are dep
 
 ### Category
 
+| Category\_Name    | Position | Avg\_Viewers | Peak\_Viewers | Start\_Time         | Duration(hours) |
+| ----------------- | -------- | ------------ | ------------- | ------------------- | --------------- |
+| Just Chatting     | 2        | 70,000       | 100,000       | 10/12/2022 2:00 AM  | 12              |
+| Minecraft         | 1        | 60,000       | 75,000        | 10/14/2022 3:00 AM  | 8               |
+| World of Warcraft | 4        | 50,000       | 60,000        | 10/11/2022 11:00 PM | 3               |
 
+### Game
 
 
 
