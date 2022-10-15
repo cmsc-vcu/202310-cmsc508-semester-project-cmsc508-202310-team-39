@@ -70,7 +70,7 @@ Since all nonprime fields within the previously listed relational schema are dep
 
 ## Sample Data
 
-# Streamer
+### Streamer
 
 | Name     | Follower\_Count | Subscriber\_Count | Account\_Creation\_date | Partner\_Status |
 | -------- | --------------- | ----------------- | ----------------------- | --------------- |
