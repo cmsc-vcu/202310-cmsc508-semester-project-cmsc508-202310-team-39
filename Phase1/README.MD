@@ -66,4 +66,8 @@ Twitch is a live streaming platform consisting of thousands of different streame
 
 ## Decomposition into BCNF Form
 
+Since all nonprime fields within the previously listed relational schema are dependent on their respective keys, decomposition of the relations into BCNF is not required. This can be proven via a brief overview of each of the entities described in this document. In the Streamer entity, follower_count, subscriber_count, account_creation_date, and partner_status are dependent on the Streamer's unique Twitch name. Each nonprime attribute solely relates to the Twitch name and do not relate to each other. When accessing one of a Streamer's Streams, you can access their stream title, avg_viewers, peak_viewers, language, start_date, followers_gained, and subscibers_gained with Twitch's API assuming you have the primary key of {streamer_name, start_date}. The same logic continues to apply for each relation in the relational schema.
+
+## Sample Data
+
 
