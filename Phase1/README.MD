@@ -70,4 +70,14 @@ Since all nonprime fields within the previously listed relational schema are dep
 
 ## Sample Data
 
+# Streamer
+
+| Name     | Follower\_Count | Subscriber\_Count | Account\_Creation\_date | Partner\_Status |
+| -------- | --------------- | ----------------- | ----------------------- | --------------- |
+| xqc      | 11,263,559      | 81,193            | 9/12/2014               | TRUE            |
+| pokimane | 9,244,000       | 3,271             | 6/7/2013                | TRUE            |
+| hasanabi | 2,240,000       | 19,628            | 3/23/2018               | TRUE            |
+
+
+
 
