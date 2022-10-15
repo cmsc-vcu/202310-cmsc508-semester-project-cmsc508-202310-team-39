@@ -103,4 +103,8 @@ Since all nonprime fields within the previously listed relational schema are dep
 
 ### Chat
 
-
+| Chat\_ID | Number\_of\_Chatters | Unique\_Messages |
+| -------- | -------------------- | ---------------- |
+| 0        | 30,000               | 60,000           |
+| 1        | 8,000                | 16,000           |
+| 2        | 15,000               | 30,000           |
