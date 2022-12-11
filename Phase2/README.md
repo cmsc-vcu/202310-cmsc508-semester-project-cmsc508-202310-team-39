@@ -8,6 +8,18 @@ Twitch is a live streaming platform consisting of thousands of different streame
 
 Unfortunately, due to time constraints, we were not able to mine real life information from different streamers and thus had to resort to using faked data. While this is disappointing, since the entire initial purpose of this assignment for us was to provide a diagnostic for streamers interested in improving their metrics, we are still relatively satisfied with the work we've done on this assignment so far. Therefore, the scope of our project has changed to reflect the metrics of a select few streamers (i.e. xQc, pokimane, and hasanabi) and a few of each of their streams. 
 
+## User Roles
+
+Within our website, there are two clearly defined roles: the general User, who is able to view the contents of the different tables and the 20 different queries, and the Admin, who can apply all of the different CRUD operations (Create, Update, Delete) on each of the tables. One can sign into our website with accounts from different roles to view all of the website's contents. 
+
+## Improvements
+
+**TBD**
+
+## Presentation and Website Links:
+
+**TBD**
+
 ## Queries
 
 * Display a list of each streamer and their most streamed Twitch category
@@ -31,18 +43,6 @@ Unfortunately, due to time constraints, we were not able to mine real life infor
 * What month had the highest spike in followers? 
 * What game was the least popular to stream?
 * Display a list of top 10 streamers ranked by join date. 
-
-## User Roles
-
-Within our website, there are two clearly defined roles: the general User, who is able to view the contents of the different tables and the 20 different queries, and the Admin, who can apply all of the different CRUD operations (Create, Update, Delete) on each of the tables. One can sign into our website with accounts from different roles to view all of the website's contents. 
-
-## Improvements
-
-**TBD**
-
-## Presentation and Website Links:
-
-**TBD**
 
 ## ER Diagram
 
