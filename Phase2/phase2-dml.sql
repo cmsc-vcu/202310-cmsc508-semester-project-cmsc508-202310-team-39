@@ -59,3 +59,19 @@ ORDER BY
     game_release_date ASC
 LIMIT 2
 ;
+
+-- query 6: Find the average number of characters in each streamers’ name
+
+
+with counter_cte as (
+    SELECT
+        name,
+        LENGTH(name) as lenNames
+    FROM
+        Streamer
+    GROUP BY
+        name
+)
+SELECT
+    format(sum(lenNames) / count(name), 1) as avgChar
+FROM counter_cte;
