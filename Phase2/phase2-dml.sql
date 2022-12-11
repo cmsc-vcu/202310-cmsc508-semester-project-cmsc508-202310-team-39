@@ -22,3 +22,16 @@ FROM
 ORDER BY
     1
 ;
+
+-- query 3: What were the top 3 most common languages spoken in each stream?
+
+SELECT
+    language,
+    count(language) as lang_count
+FROM
+    Stream
+GROUP BY
+    language
+ORDER BY
+    lang_count DESC
+LIMIT 3;
