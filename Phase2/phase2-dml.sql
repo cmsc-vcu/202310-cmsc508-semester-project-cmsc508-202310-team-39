@@ -35,3 +35,15 @@ GROUP BY
 ORDER BY
     lang_count DESC
 LIMIT 3;
+
+-- query 4: Display a list of each Streamer's age and their number of followers
+
+SELECT
+    name,
+    age,
+    follower_count
+FROM
+    Streamer
+ORDER BY
+    age DESC
+;
