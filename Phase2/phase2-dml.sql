@@ -59,3 +59,34 @@ ORDER BY
     game_release_date ASC
 LIMIT 2
 ;
+
+-- query 6: Find the average number of characters in each streamers’ name
+
+
+with counter_cte as (
+    SELECT
+        name,
+        LENGTH(name) as lenNames
+    FROM
+        Streamer
+    GROUP BY
+        name
+)
+SELECT
+    format(sum(lenNames) / count(name), 1) as avgChar
+FROM counter_cte;
+
+-- query 7: What is the average number of acharacters on average in streamers' stream titles? 
+-- Find the offset between the average and each streamer's title.
+
+
+SELECT
+    streamer_name,
+    title, 
+    LENGTH(title) as title_length,
+    format((SELECT AVG(LENGTH(title)) FROM Stream), 1) as avg_title_length,
+    abs(format((LENGTH(title) - (SELECT AVG(LENGTH(title)) FROM Stream)), 1)) as offset
+FROM Stream
+order by offset asc;
+
+
