@@ -10,3 +10,15 @@ FROM Streamer a
 WHERE
     avg_viewers >= 10000
 ;
+
+-- query 2: Display a list of each game genre and their total current viewers
+
+SELECT
+    game_name,
+    game_genre,
+    total_current_viewers
+FROM
+    Game
+ORDER BY
+    1
+;
