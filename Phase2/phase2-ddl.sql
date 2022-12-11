@@ -14,6 +14,7 @@ drop table if exists Game;
 
 create table Streamer(
     name varchar(255) unique,
+    age int not null,
     follower_count int NOT NULL,
     subscriber_count int NOT NULL,
     account_creation_date varchar(255),
@@ -49,6 +50,7 @@ create table Game(
     game_genre varchar(255),
     total_current_viewers int not null,
     game_popularity_rank int not null unique,
+    game_release_date varchar(255),
     primary key(game_name)
 );
 create table Chat(
@@ -62,18 +64,18 @@ create table Chat(
 
 
 -- task 2: insert values
-insert into Streamer(name, follower_count, subscriber_count, account_creation_date, partner_status) values
-    ('xQc', 11263559, 81193, '9/12/2014', TRUE),
-    ('pokimane', 9200000, 4000, '6/7/2013', TRUE),
-    ('hasanabi', 8000000, 50000, '3/23/2018', TRUE),
-    ('erobb221', 1000000, 3000, '8/12/2016', TRUE),
-    ('clintstevens', 2000000, 1500, '7/6/2015', TRUE)
+insert into Streamer(name, age, follower_count, subscriber_count, account_creation_date, partner_status) values
+    ('xQc', 27, 11263559, 81193, '9/12/2014', TRUE),
+    ('pokimane', 26, 9200000, 4000, '6/7/2013', TRUE),
+    ('hasanabi', 32, 8000000, 50000, '3/23/2018', TRUE),
+    ('erobb221', 27, 1000000, 3000, '8/12/2016', TRUE),
+    ('clintstevens', 24, 2000000, 1500, '7/6/2015', TRUE)
 ;
 insert into Stream(streamer_name, start_date, title, avg_viewers, peak_viewers, followers_gained, subscribers_gained, language) values
-    ('xQc', '12/9/2022', 'Welcome to the stream!', 70000, 100000, 5000, 400, 'English'),
+    ('xQc', '12/9/2022', 'Welcome to the stream!', 70000, 100000, 5000, 400, 'French'),
     ('pokimane', '12/10/2022', 'Welcome to the stream!', 20000, 23000, 4000, 500, 'English'),
-    ('hasanabi', '12/11/2022', 'Welcome to the stream!', 30000, 50000, 3000, 500, 'English'),
-    ('erobb221', '12/12/2022', 'Welcome to the stream!', 6000, 7000, 1000, 100, 'English'),
+    ('hasanabi', '12/11/2022', 'Welcome to the stream!', 30000, 50000, 3000, 500, 'Turkish'),
+    ('erobb221', '12/12/2022', 'Welcome to the stream!', 6000, 7000, 1000, 100, 'French'),
     ('clintstevens', '12/13/2022', 'Welcome to the stream!', 4000, 6000, 1000, 200, 'English')
 ;
 insert into Category (streamID, category_name, position, avg_category_viewers, peak_category_viewers, start_time, duration_in_hours) values
@@ -83,12 +85,12 @@ insert into Category (streamID, category_name, position, avg_category_viewers, p
     (4, 'Magic the Gathering', 1, 200000, 400000, '4:00PM', 5),
     (5, 'IRL', 1, 200000, 400000, '4:00PM', 5)
 ;
-insert into Game(game_name, game_genre, total_current_viewers, game_popularity_rank) values 
-    ('Minecraft', 'Sandbox', 100000, 5),
-    ('Grand Theft Auto V', 'Open World', 100000, 4),
-    ('Hearthstone', 'TCG', 100000, 2),
-    ('Fallout 4', 'Survival', 100000, 3),
-    ('Polybridge', 'Puzzle', 100000, 1)
+insert into Game(game_name, game_genre, total_current_viewers, game_popularity_rank, game_release_date) values 
+    ('Minecraft', 'Sandbox', 100000, 5, '2011-11-18'),
+    ('Grand Theft Auto V', 'Open World', 100000, 4, '2013-9-17'),
+    ('Hearthstone', 'TCG', 100000, 2, '2014-11-3'),
+    ('Fallout 4', 'Survival', 100000, 3, '2015-11-10'),
+    ('Polybridge', 'Puzzle', 100000, 1, '2015-6-30')
 ;
 insert into Chat(streamID, num_chatters, unique_messages) values 
     (1, 70000, 200000),
@@ -97,13 +99,3 @@ insert into Chat(streamID, num_chatters, unique_messages) values
     (4, 5000, 10000),
     (5, 6000, 8000)
 ;
-
-
-
-
-
-
-
-
-
-
