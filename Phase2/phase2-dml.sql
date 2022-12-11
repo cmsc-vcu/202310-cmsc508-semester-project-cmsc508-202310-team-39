@@ -47,3 +47,15 @@ FROM
 ORDER BY
     age DESC
 ;
+
+-- query 5: What were the top 2 oldest games streamed?
+
+SELECT
+    game_name,
+    game_release_date
+FROM
+    Game
+ORDER BY
+    game_release_date ASC
+LIMIT 2
+;
