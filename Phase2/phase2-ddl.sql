@@ -62,6 +62,19 @@ create table Chat(
     foreign key (streamID) references Stream(streamID)
 );
 
+-- Create a trigger that updates the `follower_count` and `subscriber_count`
+-- in the `Streamer` table when a new stream is inserted into the `stream` table
+CREATE TRIGGER update_streamer_counts
+AFTER INSERT ON Stream
+FOR EACH ROW
+BEGIN
+    UPDATE Streamer
+    SET follower_count = follower_count + NEW.followers_gained,
+        subscriber_count = subscriber_count + NEW.subscribers_gained
+    WHERE name = NEW.streamer_name;
+END;
+
+
 
 -- task 2: insert values
 insert into Streamer(name, age, follower_count, subscriber_count, account_creation_date, partner_status) values
@@ -99,3 +112,12 @@ insert into Chat(streamID, num_chatters, unique_messages) values
     (4, 5000, 10000),
     (5, 6000, 8000)
 ;
+
+--for you to test 
+SHOW TRIGGERS;
+
+SELECT * FROM Streamer;
+
+SELECT name, follower_count, subscriber_count
+FROM Streamer
+WHERE name = 'xQc';
