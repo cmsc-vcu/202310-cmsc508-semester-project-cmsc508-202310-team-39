@@ -4,6 +4,10 @@
 
 Twitch is a live streaming platform consisting of thousands of different streamers each competing for the attention of a selective pool of viewers. Each streamer can broadcast themselves solely interacting with their chats (consisting of the live comments from viewers) or playing a wide variety of games. In order to discover new streamers, viewers can browse through different sections or categories based on the content of the stream. For example, if a viewer wanted to watch a streamer just interacting with their chat or watch them interact with people physically in the real world, they would go to the Just Chatting category and the In Real Life (IRL) category respectively. If the viewer wanted to watch a streamer play a specific game, for example World of Warcraft, then they would visit the World of Warcraft category. The main metrics for comparing the importance or success of different streamers is by the live viewer count (how many people are currently watching said streamer live), although other metrics can be used like number of followers (similar to a YouTube subscription so that the viewer can see whenever the streamer is live), subscriptions (typically $5/month subscription as a donation to the streamer), or position within their stream category (ex: the stream with the highest number of concurrent viewers in the World of Warcraft category would have a category position of #1). Since growing as a streamer can result in financial growth and influence via ad revenue from the viewers or number of subscribers, the “field” of livestreaming is incredibly competitive and therefore most streamers would do anything they could to improve their streaming metrics. The purpose of this project specifically is to collect data from Twitch’s API containing information about the metrics of the top streamers on Twitch (followers gained, views per category) and create a utility for streamers by determining the aspects of their stream which contribute to their success. This utility attempts to solve the problem of streaming growth for both Twitch’s top streamers and new streamers who would like to more deeply understand what allows for someone to be successful on Twitch. In order to populate the data for this database, we plan to collect data (stream title, different stream categories, game genres, stream start time, etc.) from a certain number (N) of Twitch’s most popular streamers over a short period of time (TBD). 
 
+**UPDATE**
+
+Unfortunately, due to time constraints, we were not able to mine real life information from different streamers and thus had to resort to using faked data. While this is disappointing, since the entire initial purpose of this assignment for us was to provide a diagnostic for streamers interested in improving their metrics, we are still relatively satisfied with the work we've done on this assignment so far. Therefore, the scope of our project has changed to reflect the metrics of a select few streamers (i.e. xQc, pokimane, and hasanabi) and a few of each of their streams. 
+
 ## Queries
 
 * Display a list of each streamer and their most streamed Twitch category
@@ -28,6 +32,17 @@ Twitch is a live streaming platform consisting of thousands of different streame
 * What game was the least popular to stream?
 * Display a list of top 10 streamers ranked by join date. 
 
+## User Roles
+
+Within our website, there are two clearly defined roles: the general User, who is able to view the contents of the different tables and the 20 different queries, and the Admin, who can apply all of the different CRUD operations (Create, Update, Delete) on each of the tables. One can sign into our website with accounts from different roles to view all of the website's contents. 
+
+## Improvements
+
+**TBD**
+
+## Presentation and Website Links:
+
+**TBD**
 
 ## ER Diagram
 
