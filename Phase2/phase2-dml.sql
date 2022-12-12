@@ -5,8 +5,8 @@
 SELECT
     name,
     avg_viewers
-FROM Streamer a
-    join Stream b on (name = streamer_name)
+FROM streamer a
+    join stream b on (name = streamer_name)
 WHERE
     avg_viewers >= 10000
 ;
@@ -18,7 +18,7 @@ SELECT
     game_genre,
     total_current_viewers
 FROM
-    Game
+    game
 ORDER BY
     1
 ;
@@ -29,7 +29,7 @@ SELECT
     language,
     count(language) as lang_count
 FROM
-    Stream
+    stream
 GROUP BY
     language
 ORDER BY
@@ -43,7 +43,7 @@ SELECT
     age,
     follower_count
 FROM
-    Streamer
+    streamer
 ORDER BY
     age DESC
 ;
@@ -54,7 +54,7 @@ SELECT
     game_name,
     game_release_date
 FROM
-    Game
+    game
 ORDER BY
     game_release_date ASC
 LIMIT 2
@@ -68,7 +68,7 @@ with counter_cte as (
         name,
         LENGTH(name) as lenNames
     FROM
-        Streamer
+        streamer
     GROUP BY
         name
 )
@@ -84,9 +84,74 @@ SELECT
     streamer_name,
     title, 
     LENGTH(title) as title_length,
-    format((SELECT AVG(LENGTH(title)) FROM Stream), 1) as avg_title_length,
-    abs(format((LENGTH(title) - (SELECT AVG(LENGTH(title)) FROM Stream)), 1)) as offset
-FROM Stream
+    format((SELECT AVG(LENGTH(title)) FROM stream), 1) as avg_title_length,
+    abs(format((LENGTH(title) - (SELECT AVG(LENGTH(title)) FROM stream)), 1)) as offset
+FROM stream
 order by offset asc;
+
+-- query 8: Which streamer has the most subscriptions per average viewcount?
+
+SELECT
+    name,
+    subscriber_count,
+    avg_viewers,
+    format((subscriber_count / avg_viewers),2) as subs_per_viewcount
+FROM
+    streamer a
+        join stream b on (name=streamer_name)
+ORDER BY subs_per_viewcount DESC
+LIMIT 1;
+
+-- query 9: Which day was most commonly streamed?
+
+with day_cte as(
+    SELECT
+        streamer_name,
+        (SELECT(DAYNAME(start_date))) as dayname
+    FROM
+        stream
+)
+SELECT
+    dayname,
+    count(dayname)
+FROM
+    day_cte
+GROUP by
+    dayname
+LIMIT 1;
+
+-- query 10: Calculate the end_time for one of xQc's streams
+
+SELECT
+    streamer_name,
+    category_name,
+    start_date,
+    start_time,
+    (SELECT DATE_ADD(start_time, INTERVAL duration_in_hours HOUR)) as end_time,
+    duration_in_hours
+FROM
+    stream a
+        join category b on (a.streamID=b.streamID)
+WHERE
+    streamer_name='xQc'
+    and start_date='2022-12-10 22:06:30'
+;
+-- query 11: Now calculate the duration of each of xQc's streams
+SELECT
+    streamer_name,
+    start_date,
+    SUM(duration_in_hours) as duration
+FROM
+    stream a 
+        join category b on (a.streamID = b.streamID)
+GROUP by
+    streamer_name, start_date
+;
+    
+    
+
+
+
+
 
 
