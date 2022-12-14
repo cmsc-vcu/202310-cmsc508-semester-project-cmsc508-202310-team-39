@@ -1,13 +1,13 @@
 -- phase2-ddl.sql
 
 
--- drop list
+-- drop table list
 
 drop table if exists chat;
+drop table if exists game;
 drop table if exists category;
 drop table if exists stream;
 drop table if exists streamer;
-drop table if exists game;
 
 
 -- task 1: create tables
@@ -36,14 +36,16 @@ create table stream(
 );
 create table category(
     category_name varchar(255),
+    category_type varchar(255) unique,
     position int not null,
     avg_category_viewers float not null,
     peak_category_viewers int not null,
     start_time time not null,
     duration_in_hours int not null,
     streamID int not null,
+    check (category_type in ('Personal', 'Gaming')),
     primary key (streamID, start_time),
-    foreign key (streamID) references stream(streamID),
+    foreign key (streamID) references stream(streamID)
 );
 create table game(
     game_name varchar(255) unique,
@@ -51,7 +53,10 @@ create table game(
     total_current_viewers int not null,
     game_popularity_rank int not null unique,
     game_release_date Date not null,
-    primary key(game_name)
+    game_category_type varchar(255),
+    primary key(game_name),
+    foreign key(game_category_type) references category(category_type),
+    check (game_category_type = 'Gaming')
 );
 create table chat(
     chat_ID int not null AUTO_INCREMENT, 
@@ -102,59 +107,90 @@ insert into chat(streamID, num_chatters, unique_messages) values
     (5, 6000, 8000)
 ;
 
+-- task 3: drop list for views
+drop view if exists streamer_view;
+drop view if exists stream_view;
+drop view if exists category_view;
+drop view if exists chat_view;
 
--- creating views
--- drop view if exists streamer_view;
--- create view streamer_view as (
---     SELECT
---         name,
---         age, 
---         account_creation_date
---     FROM
---         streamer
---     ORDER BY
---         name
--- );
--- drop view if exists stream_view;
--- create view stream_view as (
---     SELECT
---         streamer_name,
---         start_date,
---         title
---     FROM
---         stream
---     ORDER BY
---         start_date
--- );
--- drop view if exists category_view;
--- create view category_view as (
---     SELECT
---         streamer_name,
---         category_name,
---         start_date,
---         start_time
---     FROM
---         stream a
---             join category b on (a.streamID = b.streamID)
--- );
--- drop view if exists chat_view;
--- create view chat_view as (
---     SELECT
---         num_chatters,
---         unique_messages
---     FROM 
---         chat
--- )
+-- task 4: create views
 
--- -- Create a trigger that updates the `follower_count` and `subscriber_count`
--- -- in the `Streamer` table when a new stream is inserted into the `stream` table
--- CREATE TRIGGER update_streamer_counts
--- AFTER INSERT ON Stream
--- FOR EACH ROW
--- BEGIN
---     UPDATE Streamer
---     SET follower_count = follower_count + NEW.followers_gained,
---         subscriber_count = subscriber_count + NEW.subscribers_gained
---     WHERE name = NEW.streamer_name;
--- END;
+create view streamer_view as (
+    SELECT
+        name,
+        age, 
+        account_creation_date
+    FROM
+        streamer
+    ORDER BY
+        name
+);
+create view stream_view as (
+    SELECT
+        streamer_name,
+        start_date,
+        title
+    FROM
+        stream
+    ORDER BY
+        start_date
+);
+create view category_view as (
+    SELECT
+        streamer_name,
+        category_name,
+        start_date,
+        start_time
+    FROM
+        stream a
+            join category b on (a.streamID = b.streamID)
+);
+create view chat_view as (
+    SELECT
+        num_chatters,
+        unique_messages
+    FROM 
+        chat
+);
+
+-- task 5: drop if exists procedures
+
+drop procedure if exists GetStreamerInfo;
+drop procedure if exists GetStreamInfo;
+drop procedure if exists GetCategoryInfo;
+drop procedure if exists GetGameInfo;
+drop procedure if exists GetChatInfo;
+
+
+-- task 6: create procedures
+
+CREATE PROCEDURE `GetStreamerInfo`(IN `sname` VARCHAR(255)) NOT DETERMINISTIC CONTAINS SQL SQL SECURITY DEFINER SELECT * FROM streamer WHERE name=sname;
+CREATE PROCEDURE `GetStreamInfo`(IN `sname` VARCHAR(255)) NOT DETERMINISTIC CONTAINS SQL SQL SECURITY DEFINER SELECT * FROM stream WHERE streamer_name=sname;
+CREATE PROCEDURE `GetCategoryInfo`(IN `cname` VARCHAR(255)) NOT DETERMINISTIC CONTAINS SQL SQL SECURITY DEFINER SELECT * FROM category WHERE category_name=cname;
+CREATE PROCEDURE `GetGameInfo`(IN `gname` VARCHAR(255)) NOT DETERMINISTIC CONTAINS SQL SQL SECURITY DEFINER SELECT * FROM game WHERE game_name=gname;
+CREATE PROCEDURE `GetChatInfo`(IN `chid` VARCHAR(255)) NOT DETERMINISTIC CONTAINS SQL SQL SECURITY DEFINER SELECT * FROM stream WHERE chat_ID=chid;
+
+
+-- task 7: drop triggers if exist
+
+drop trigger if exists update_streamer_counts;
+
+-- task 8: create triggers
+
+
+-- -- -- Create a trigger that updates the `follower_count` and `subscriber_count`
+-- -- -- in the `Streamer` table when a new stream is inserted into the `stream` table
+CREATE TRIGGER update_streamer_counts
+AFTER INSERT ON stream
+FOR EACH ROW
+BEGIN
+    UPDATE stream
+    SET follower_count = follower_count + NEW.followers_gained,
+        subscriber_count = subscriber_count + NEW.subscribers_gained
+    WHERE name = NEW.streamer_name;
+END;
+
+
+
+
 
