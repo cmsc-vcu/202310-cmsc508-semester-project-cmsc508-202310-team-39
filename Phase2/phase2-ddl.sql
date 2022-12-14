@@ -176,45 +176,81 @@ CREATE PROCEDURE `GetChatInfo`(IN `chid` VARCHAR(255)) NOT DETERMINISTIC CONTAIN
 
 -- task 7: drop triggers if exist
 
-drop trigger if exists update_streamer_counts;
+drop trigger if exists log_stream_changes_insert;
+drop trigger if exists log_stream_changes_update;
+drop trigger if exists log_stream_changes_delete;
+drop trigger if exists update_follower_count;
+drop trigger if exists update_subscriber_count;
+
+
+
 
 -- task 8: create triggers
 
 
--- -- -- Create a trigger that updates the `follower_count` and `subscriber_count`
--- -- -- in the `Streamer` table when a new stream is inserted into the `stream` table
-CREATE TRIGGER update_streamer_counts
+--sets up the creation of log tables
+
+drop table if exists stream_changes_log
+-- stream_changes_log table
+CREATE TABLE stream_changes_log (
+    id int,
+    change_type varchar(255),
+    streamer_name varchar(255),
+    start_date datetime,
+    title varchar(255),
+    avg_viewers float,
+    peak_viewers int,
+    followers_gained int,
+    subscribers_gained int,
+    language varchar(255)
+);
+
+
+CREATE TRIGGER log_stream_changes_insert
+AFTER INSERT ON stream
+FOR EACH ROW
+BEGIN
+    INSERT INTO stream_changes_log (id, change_type, streamer_name, start_date, title, avg_viewers, peak_viewers, followers_gained, subscribers_gained, language)
+    VALUES (NEW.streamID, 'INSERT', NEW.streamer_name, NEW.start_date, NEW.title, NEW.avg_viewers, NEW.peak_viewers, NEW.followers_gained, NEW.subscribers_gained, NEW.language);
+END;
+
+CREATE TRIGGER log_stream_changes_update
+AFTER UPDATE ON stream
+FOR EACH ROW
+BEGIN
+    INSERT INTO stream_changes_log (id, change_type, streamer_name, start_date, title, avg_viewers, peak_viewers, followers_gained, subscribers_gained, language)
+    VALUES (NEW.streamID, 'UPDATE', NEW.streamer_name, NEW.start_date, NEW.title, NEW.avg_viewers, NEW.peak_viewers, NEW.followers_gained, NEW.subscribers_gained, NEW.language);
+END;
+
+CREATE TRIGGER log_stream_changes_delete
+AFTER DELETE ON stream
+FOR EACH ROW
+BEGIN
+    INSERT INTO stream_changes_log (id, change_type, streamer_name, start_date, title, avg_viewers, peak_viewers, followers_gained, subscribers_gained, language)
+    VALUES (OLD.streamID, 'DELETE', OLD.streamer_name, OLD.start_date, OLD.title, OLD.avg_viewers, OLD.peak_viewers, OLD.followers_gained, OLD.subscribers_gained, OLD.language);
+END;
+
+
+
+--Create a trigger that updates the follower_count
+CREATE TRIGGER update_follower_count
 AFTER INSERT ON stream
 FOR EACH ROW
 BEGIN
     UPDATE stream
-    SET follower_count = follower_count + NEW.followers_gained,
-        subscriber_count = subscriber_count + NEW.subscribers_gained
+    SET follower_count = follower_count + NEW.followers_gained
     WHERE name = NEW.streamer_name;
 END;
 
---Creates a trigger that increments the streamID in the game table every 
---time a new stream is entered in the stream table
-CREATE TRIGGER increment_stream_id
+--Create a trigger that updates the subscriber_count
+CREATE TRIGGER update_subscriber_count
 AFTER INSERT ON stream
 FOR EACH ROW
 BEGIN
-    UPDATE game
-    SET streamID = streamID + 1
-    WHERE game_name = NEW.title;
+    UPDATE stream
+    SET subscriber_count = subscriber_count + NEW.subscribers_gained
+    WHERE name = NEW.streamer_name;
 END;
-
---Creates a trigger that increments the streamID in the chat table every 
---time a new stream is entered in the stream table
-CREATE TRIGGER increment_stream_id_chat
-AFTER INSERT ON stream
-FOR EACH ROW
-BEGIN
-    UPDATE chat
-    SET streamID = streamID + 1
-    WHERE chat_ID = NEW.title;
-END;
-
 
 
 
