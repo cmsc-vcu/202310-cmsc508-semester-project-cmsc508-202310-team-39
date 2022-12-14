@@ -1,4 +1,4 @@
-# Phase 2 README Update
+# Phase 2 README
 
 ## Contextualization
 
