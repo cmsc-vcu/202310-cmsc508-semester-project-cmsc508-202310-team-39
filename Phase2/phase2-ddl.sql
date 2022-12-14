@@ -1,4 +1,6 @@
 -- phase2-ddl.sql
+-- Created by Luke Unterman
+-- Triggers created by Blue Arevalo
 
 
 -- drop table list
@@ -8,7 +10,7 @@ drop table if exists game;
 drop table if exists category;
 drop table if exists stream;
 drop table if exists streamer;
-
+drop table if exists stream_changes_log;
 
 -- task 1: create tables
 
@@ -32,7 +34,7 @@ create table stream(
     subscribers_gained int NOT NULL,
     language varchar(255),
     primary key (streamID),
-    foreign key (streamer_name) references streamer(name)
+    foreign key (streamer_name) references streamer(name) on delete cascade on update cascade
 );
 create table category(
     category_name varchar(255),
@@ -43,7 +45,7 @@ create table category(
     duration_in_hours int not null,
     streamID int not null,
     primary key (streamID, start_time),
-    foreign key (streamID) references stream(streamID)
+    foreign key (streamID) references stream(streamID) on delete cascade on update cascade
 );
 
 -- meant to be a disjoint set of category, but couldn't figure out how to actaully connect them by non unique or primary key
@@ -56,7 +58,7 @@ create table game(
     game_category_type varchar(255),
     streamID int not null,
     primary key(game_name),
-    foreign key (streamID) references stream(streamID),
+    foreign key (streamID) references stream(streamID) on delete cascade on update cascade, 
     check (game_name != 'Just Chatting' and game_name != 'IRL')
 );
 create table chat(
@@ -65,7 +67,21 @@ create table chat(
     unique_messages int not null,
     streamID int not null, 
     primary key (chat_ID),
-    foreign key (streamID) references stream(streamID)
+    foreign key (streamID) references stream(streamID) on delete cascade on update cascade
+);
+
+-- this table is just used for logging triggers
+CREATE TABLE stream_changes_log (
+    id int,
+    change_type varchar(255),
+    streamer_name varchar(255),
+    start_date datetime,
+    title varchar(255),
+    avg_viewers float,
+    peak_viewers int,
+    followers_gained int,
+    subscribers_gained int,
+    language varchar(255)
 );
 
 
@@ -182,29 +198,7 @@ drop trigger if exists log_stream_changes_delete;
 drop trigger if exists update_follower_count;
 drop trigger if exists update_subscriber_count;
 
-
-
-
 -- task 8: create triggers
-
-
---sets up the creation of log tables
-
-drop table if exists stream_changes_log
--- stream_changes_log table
-CREATE TABLE stream_changes_log (
-    id int,
-    change_type varchar(255),
-    streamer_name varchar(255),
-    start_date datetime,
-    title varchar(255),
-    avg_viewers float,
-    peak_viewers int,
-    followers_gained int,
-    subscribers_gained int,
-    language varchar(255)
-);
-
 
 CREATE TRIGGER log_stream_changes_insert
 AFTER INSERT ON stream
@@ -230,9 +224,6 @@ BEGIN
     VALUES (OLD.streamID, 'DELETE', OLD.streamer_name, OLD.start_date, OLD.title, OLD.avg_viewers, OLD.peak_viewers, OLD.followers_gained, OLD.subscribers_gained, OLD.language);
 END;
 
-
-
---Create a trigger that updates the follower_count
 CREATE TRIGGER update_follower_count
 AFTER INSERT ON stream
 FOR EACH ROW
@@ -242,7 +233,6 @@ BEGIN
     WHERE name = NEW.streamer_name;
 END;
 
---Create a trigger that updates the subscriber_count
 CREATE TRIGGER update_subscriber_count
 AFTER INSERT ON stream
 FOR EACH ROW
@@ -251,9 +241,3 @@ BEGIN
     SET subscriber_count = subscriber_count + NEW.subscribers_gained
     WHERE name = NEW.streamer_name;
 END;
-
-
-
-
-
-
