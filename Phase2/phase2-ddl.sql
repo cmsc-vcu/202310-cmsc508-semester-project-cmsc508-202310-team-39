@@ -102,6 +102,50 @@ insert into chat(streamID, num_chatters, unique_messages) values
     (5, 6000, 8000)
 ;
 
+
+-- creating views
+-- drop view if exists streamer_view;
+-- create view streamer_view as (
+--     SELECT
+--         name,
+--         age, 
+--         account_creation_date
+--     FROM
+--         streamer
+--     ORDER BY
+--         name
+-- );
+-- drop view if exists stream_view;
+-- create view stream_view as (
+--     SELECT
+--         streamer_name,
+--         start_date,
+--         title
+--     FROM
+--         stream
+--     ORDER BY
+--         start_date
+-- );
+-- drop view if exists category_view;
+-- create view category_view as (
+--     SELECT
+--         streamer_name,
+--         category_name,
+--         start_date,
+--         start_time
+--     FROM
+--         stream a
+--             join category b on (a.streamID = b.streamID)
+-- );
+-- drop view if exists chat_view;
+-- create view chat_view as (
+--     SELECT
+--         num_chatters,
+--         unique_messages
+--     FROM 
+--         chat
+-- )
+
 -- -- Create a trigger that updates the `follower_count` and `subscriber_count`
 -- -- in the `Streamer` table when a new stream is inserted into the `stream` table
 -- CREATE TRIGGER update_streamer_counts
