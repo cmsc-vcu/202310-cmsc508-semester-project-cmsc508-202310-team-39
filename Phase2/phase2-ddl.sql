@@ -62,16 +62,56 @@ create table chat(
     foreign key (streamID) references stream(streamID)
 );
 
--- Create a trigger that updates the `follower_count` and `subscriber_count`
+--Triggers
+
+-- Creates a trigger that updates the `follower_count` and `subscriber_count`
 -- in the `Streamer` table when a new stream is inserted into the `stream` table
 CREATE TRIGGER update_streamer_counts
-AFTER INSERT ON Stream
+AFTER INSERT ON stream
 FOR EACH ROW
 BEGIN
-    UPDATE Streamer
+    UPDATE streamer
     SET follower_count = follower_count + NEW.followers_gained,
         subscriber_count = subscriber_count + NEW.subscribers_gained
     WHERE name = NEW.streamer_name;
+END;
+
+--Every time a new stream is inserted into the stream table, 
+--the streamID in the chat table increases
+CREATE TRIGGER update_chat_streamID
+AFTER INSERT ON stream
+FOR EACH ROW
+BEGIN
+    UPDATE chat
+    SET streamID = NEW.streamID
+    WHERE streamID = OLD.streamID;
+END;
+
+--Updates the position and start_time columns when a new 
+--stream is inserted into the stream table
+CREATE TRIGGER update_category_position
+AFTER INSERT ON stream
+FOR EACH ROW
+BEGIN
+    UPDATE category
+    SET position = position + 1
+    WHERE streamID = NEW.streamID AND position >= NEW.position;
+
+    UPDATE category
+    SET start_time = start_time + INTERVAL duration_in_hours HOUR
+    WHERE streamID = NEW.streamID AND start_time >= NEW.start_time;
+END;
+
+-- Updates the game_popularity_rank and total_current_viewers 
+--in the game table when a new stream is inserted 
+CREATE TRIGGER update_game_popularity
+AFTER INSERT ON stream
+FOR EACH ROW
+BEGIN
+    UPDATE game
+    SET game_popularity_rank = game_popularity_rank + 1,
+        total_current_viewers = total_current_viewers + NEW.avg_viewers
+    WHERE game_name = NEW.game_name;
 END;
 
 
@@ -114,11 +154,3 @@ insert into chat(streamID, num_chatters, unique_messages) values
     (5, 6000, 8000)
 ;
 
---for you to test 
-SHOW TRIGGERS;
-
-SELECT * FROM Streamer;
-
-SELECT name, follower_count, subscriber_count
-FROM Streamer
-WHERE name = 'xQc';
