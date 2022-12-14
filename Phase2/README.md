@@ -23,7 +23,9 @@ Unfortunately, due to time constraints, we were unable to create a PHP website d
 * Calculate the end_time for one of xQc's streams
 * Now calculate the duration of each of xQc's streams
 
-## Improvements
+## Lessons Learned
+
+## Future Improvements for Project Next Semester
 
 **TBD**
 
