@@ -1,13 +1,13 @@
 -- phase2-ddl.sql
 
 
--- drop list
+-- drop table list
 
 drop table if exists chat;
+drop table if exists game;
 drop table if exists category;
 drop table if exists stream;
 drop table if exists streamer;
-drop table if exists game;
 
 
 -- task 1: create tables
@@ -36,13 +36,15 @@ create table stream(
 );
 create table category(
     category_name varchar(255),
+    category_type varchar(255) unique,
     position int not null,
     avg_category_viewers float not null,
     peak_category_viewers int not null,
     start_time time not null,
     duration_in_hours int not null,
     streamID int not null,
-    primary key (category_name),
+    check (category_type in ('Personal', 'Gaming')),
+    primary key (streamID, start_time),
     foreign key (streamID) references stream(streamID)
 );
 create table game(
@@ -51,7 +53,10 @@ create table game(
     total_current_viewers int not null,
     game_popularity_rank int not null unique,
     game_release_date Date not null,
-    primary key(game_name)
+    game_category_type varchar(255),
+    primary key(game_name),
+    foreign key(game_category_type) references category(category_type),
+    check (game_category_type = 'Gaming')
 );
 create table chat(
     chat_ID int not null AUTO_INCREMENT, 
@@ -62,56 +67,16 @@ create table chat(
     foreign key (streamID) references stream(streamID)
 );
 
---Triggers
-
--- Creates a trigger that updates the `follower_count` and `subscriber_count`
+-- Create a trigger that updates the `follower_count` and `subscriber_count`
 -- in the `Streamer` table when a new stream is inserted into the `stream` table
 CREATE TRIGGER update_streamer_counts
-AFTER INSERT ON stream
+AFTER INSERT ON Stream
 FOR EACH ROW
 BEGIN
-    UPDATE streamer
+    UPDATE Streamer
     SET follower_count = follower_count + NEW.followers_gained,
         subscriber_count = subscriber_count + NEW.subscribers_gained
     WHERE name = NEW.streamer_name;
-END;
-
---Every time a new stream is inserted into the stream table, 
---the streamID in the chat table increases
-CREATE TRIGGER update_chat_streamID
-AFTER INSERT ON stream
-FOR EACH ROW
-BEGIN
-    UPDATE chat
-    SET streamID = NEW.streamID
-    WHERE streamID = OLD.streamID;
-END;
-
---Updates the position and start_time columns when a new 
---stream is inserted into the stream table
-CREATE TRIGGER update_category_position
-AFTER INSERT ON stream
-FOR EACH ROW
-BEGIN
-    UPDATE category
-    SET position = position + 1
-    WHERE streamID = NEW.streamID AND position >= NEW.position;
-
-    UPDATE category
-    SET start_time = start_time + INTERVAL duration_in_hours HOUR
-    WHERE streamID = NEW.streamID AND start_time >= NEW.start_time;
-END;
-
--- Updates the game_popularity_rank and total_current_viewers 
---in the game table when a new stream is inserted 
-CREATE TRIGGER update_game_popularity
-AFTER INSERT ON stream
-FOR EACH ROW
-BEGIN
-    UPDATE game
-    SET game_popularity_rank = game_popularity_rank + 1,
-        total_current_viewers = total_current_viewers + NEW.avg_viewers
-    WHERE game_name = NEW.game_name;
 END;
 
 
@@ -133,11 +98,12 @@ insert into stream(streamer_name, start_date, title, avg_viewers, peak_viewers, 
     ('clintstevens', '2022-12-10 18:00:00', 'Welcome to the stream!', 4000, 6000, 1000, 200, 'English')
 ;
 insert into category (streamID, category_name, position, avg_category_viewers, peak_category_viewers, start_time, duration_in_hours) values
-    (1, 'Just Chatting', 1, 200000, 400000, '16:00:00', 5),
-    (2, 'Minecraft', 1, 200000, 400000, '16:00:00', 5),
-    (3, 'World of Warcraft', 1, 200000, 400000, '16:00:00', 5),
-    (4, 'Magic the Gathering', 1, 200000, 400000, '16:00:00', 5),
-    (5, 'IRL', 1, 200000, 400000, '16:00:00', 5)
+    (1, 'Just Chatting', 2, 70000, 100000, '22:06:30', 1),
+    (1, 'Minecraft', 1, 75000, 78000, '23:06:30', 5),
+    (2, 'Just Chatting', 2, 80000, 95000, '20:04:01', 8),
+    (3, 'Valorant', 1, 200000, 400000, '16:00:00', 5),
+    (4, 'Kerbal Space Program', 1, 200000, 400000, '16:00:00', 5),
+    (5, 'Super Mario 64', 1, 200000, 400000, '16:00:00', 5)
 ;
 insert into game(game_name, game_genre, total_current_viewers, game_popularity_rank, game_release_date) values 
     ('Minecraft', 'Sandbox', 100000, 5, '2011-11-18'),
@@ -154,3 +120,11 @@ insert into chat(streamID, num_chatters, unique_messages) values
     (5, 6000, 8000)
 ;
 
+--for you to test 
+SHOW TRIGGERS;
+
+SELECT * FROM Streamer;
+
+SELECT name, follower_count, subscriber_count
+FROM Streamer
+WHERE name = 'xQc';
