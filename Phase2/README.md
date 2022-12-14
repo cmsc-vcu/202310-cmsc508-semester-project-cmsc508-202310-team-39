@@ -35,4 +35,4 @@ Unfortunately, due to time constraints, we were unable to create a PHP website d
 
 ## ER Diagram
 
-![erdiagram3](https://user-images.githubusercontent.com/80475070/195957339-5b5070a4-8f65-4bdd-bd3b-e3cc35d556ce.jpg)
+![erdiagram3](https://raw.githubusercontent.com/cmsc-vcu/202310-cmsc508-semester-project-cmsc508-202310-team-39/main/Phase2/real_final_erdiagam.jpg?token=GHSAT0AAAAAAB33B32XADE4C6DMQN6FGLHSY42MB2Q)
