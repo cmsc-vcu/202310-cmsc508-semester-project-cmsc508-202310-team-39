@@ -241,8 +241,3 @@ BEGIN
     SET subscriber_count = subscriber_count + NEW.subscribers_gained
     WHERE name = NEW.streamer_name;
 END;
-
-
-
-
-
