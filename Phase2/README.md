@@ -23,12 +23,12 @@ Unfortunately, due to time constraints, we were unable to create a PHP website d
 * Calculate the end_time for one of xQc's streams
 * Now calculate the duration of each of xQc's streams
 
-## Improvements to the Project for Future Classes
+## Experience
 
 We found that this project was a great way to catalog the skills we learned throughout the semester. It was great being able to contextualize an idea, and then through iterations, see that idea come to life. We learned a tremendous amount about databases, queries, and the many ways that data can be visualized. 
 
 
-## Lessons Learned
+## Improvement to the Project for Future Classes
 If we had to do this project again, we would try to learn more about PHP and website design. We felt like we truly grasped the database fundamentals but felt disappointed that we fell short of 100% mastery due to not fully grasping PHP. This is something we believe could be further expanded on next year. We looked forward to website creation and were saddened to have spent little time on it. Our suggestion is that next term, more in-class time be spent on the subject. 
 
 ## Presentation and Website Links:
