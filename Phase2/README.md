@@ -99,3 +99,15 @@ Since all nonprime fields within the previously listed relational schema are dep
 |pokimane    |26 |9200000       |4000            |2013-06-07           |1             |
 |xQc         |27 |11263559      |81193           |2014-09-12           |1             |
 
+### Stream
+
+|streamID    |streamer_name|start_date|title|avg_viewers|peak_viewers|followers_gained|subscribers_gained|language|
+|------------|-------------|----------|-----|-----------|------------|----------------|------------------|--------|
+|1           |xQc          |2022-12-10 22:06:30|WELCOME TO THE GODDAMN STREAM BROTHER! 18 HOUR STREAM INCOMING!|70000      |100000      |5000            |400               |French  |
+|2           |xQc          |2022-12-11 20:04:01|yo   |70000      |100000      |5000            |400               |French  |
+|3           |pokimane     |2022-12-10 12:00:05|Valorant!|20000      |23000       |4000            |500               |English |
+|4           |hasanabi     |2022-12-10 11:08:10|Politics and shit|30000      |50000       |3000            |500               |Turkish |
+|5           |erobb221     |2022-12-10 17:24:12|not ending stream until i land on mars|6000       |7000        |1000            |100               |French  |
+|6           |clintstevens |2022-12-10 18:00:00|Welcome to the stream!|4000       |6000        |1000            |200               |English |
+|7           |clintstevens |2022-12-14 18:00:00|Polybridge|4000       |6000        |1000            |200               |English |
+
