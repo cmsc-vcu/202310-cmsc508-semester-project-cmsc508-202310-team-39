@@ -111,3 +111,38 @@ Since all nonprime fields within the previously listed relational schema are dep
 |6           |clintstevens |2022-12-10 18:00:00|Welcome to the stream!|4000       |6000        |1000            |200               |English |
 |7           |clintstevens |2022-12-14 18:00:00|Polybridge|4000       |6000        |1000            |200               |English |
 
+### Game
+
+|game_name   |game_genre|total_current_viewers|game_popularity_rank|game_release_date|game_category_type|streamID|
+|------------|----------|---------------------|--------------------|-----------------|------------------|--------|
+|Hearthstone |TCG       |100000               |2                   |2014-11-03       |NULL              |4       |
+|Minecraft   |Sandbox   |100000               |5                   |2011-11-18       |NULL              |1       |
+|Polybridge  |Puzzle    |100000               |1                   |2015-06-30       |NULL              |6       |
+|Super Mario 64|Platformer|100000               |3                   |1996-06-23       |NULL              |5       |
+|Valorant    |Shooter   |100000               |4                   |2020-06-02       |NULL              |3       |
+
+### Category
+
+|category_name|position|avg_category_viewers|peak_category_viewers|start_time|duration_in_hours|streamID|
+|-------------|--------|--------------------|---------------------|----------|-----------------|--------|
+|Just Chatting|2       |70000               |100000               |22:06:30  |1                |1       |
+|Minecraft    |1       |75000               |78000                |23:06:30  |5                |1       |
+|Just Chatting|2       |80000               |95000                |20:04:01  |8                |2       |
+|Valorant     |1       |200000              |400000               |16:00:00  |5                |3       |
+|Hearthstone  |1       |200000              |400000               |16:00:00  |5                |4       |
+|Super Mario 64|1       |200000              |400000               |16:00:00  |5                |5       |
+|Polybridge   |4       |5000                |10000                |18:00:00  |4                |6       |
+
+### Chat
+
+|chat_ID     |num_chatters|unique_messages|streamID|
+|------------|------------|---------------|--------|
+|1           |70000       |200000         |1       |
+|2           |20000       |30000          |2       |
+|3           |30000       |40000          |3       |
+|4           |5000        |10000          |4       |
+|5           |6000        |8000           |5       |
+
+#### Best Wishes!
+
+I hope whoever reached the end of this page has a nice day!
