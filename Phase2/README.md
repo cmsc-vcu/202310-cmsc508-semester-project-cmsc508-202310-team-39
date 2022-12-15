@@ -35,8 +35,7 @@ Our suggestion is that next term, more in-class time be spent on the subject. Fo
 
 (http://cmsc508.com/202310/team39/)
 
-
-drive.google.com/video_project
+https://user-images.githubusercontent.com/80475070/207757306-c197da9c-2655-4c2c-9aa1-e09c1e6b772f.mp4
 
 
 ## ER Diagram
