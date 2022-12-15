@@ -91,7 +91,7 @@ insert into streamer(name, age, follower_count, subscriber_count, account_creati
     ('pokimane', 26, 9200000, 4000, '2013-6-7', TRUE),
     ('hasanabi', 32, 8000000, 50000, '2018-3-23', TRUE),
     ('erobb221', 27, 1000000, 3000, '2016-8-12', TRUE),
-    ('clintstevens', 24, 2000000, 1500, '2015-7-6', TRUE)
+    ('clintstevens', 24, 2000000, 1500, '2015-7-6', FALSE)
 ;
 insert into stream(streamer_name, start_date, title, avg_viewers, peak_viewers, followers_gained, subscribers_gained, language) values
     ('xQc', '2022-12-10 22:06:30', 'WELCOME TO THE GODDAMN STREAM BROTHER! 18 HOUR STREAM INCOMING!', 70000, 100000, 5000, 400, 'French'),
@@ -113,9 +113,9 @@ insert into category (streamID, category_name, position, avg_category_viewers, p
 ;
 insert into game(game_name, game_genre, total_current_viewers, game_popularity_rank, game_release_date, streamID) values 
     ('Minecraft', 'Sandbox', 100000, 5, '2011-11-18', 1),
-    ('Valorant', 'Shooter', 100000, 4, '2013-9-17', 3),
+    ('Valorant', 'Shooter', 100000, 4, '2020-6-2', 3),
     ('Hearthstone', 'TCG', 100000, 2, '2014-11-3', 4),
-    ('Super Mario 64', 'Platformer', 100000, 3, '2015-11-10', 5),
+    ('Super Mario 64', 'Platformer', 100000, 3, '1996-6-23', 5),
     ('Polybridge', 'Puzzle', 100000, 1, '2015-6-30', 6)
 ;
 insert into chat(streamID, num_chatters, unique_messages) values 
@@ -241,3 +241,8 @@ BEGIN
     SET subscriber_count = subscriber_count + NEW.subscribers_gained
     WHERE name = NEW.streamer_name;
 END;
+
+
+
+
+
