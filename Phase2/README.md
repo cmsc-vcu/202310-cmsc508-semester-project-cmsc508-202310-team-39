@@ -25,6 +25,12 @@ Unfortunately, due to time constraints, we were unable to create a fully fleshed
 * Who gained the most followers collectively in one stream?
 * There is a very big difference in the atmosphere of a chatroom that is just spamming the same messages verses a chatroom with actual unique thought. Which streamer had the most unique chatters per average view_count?
 * Create a list of the amount of money each Twitch streamer made from subscriptions. Make sure that partnered streamers earn $3 for each subscription, and non-partnered streamers make $2.5.
+* Find the number of games played across each stream; don't include Personal categories like Just Chatting. Look at the different genre categories.
+* Now rank each game according to the number of hours streamed
+* Wow! How interesting! I wonder why Minecraft is the most streamed game? Anyways, now I want you to figure out if total hours streamed for a game correlates with their game rank!
+* Huh. I guess it kinda does. Create a query that adds the follower and subcriber count for each of the streams  to the respective streamer. Make this a new column.
+* Now calculate the percent increase in follower/subscribers over these streams.
+* Finally, find the number of unique message per number of chatters for each stream
 
 ## Experience
 
