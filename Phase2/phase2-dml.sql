@@ -191,6 +191,109 @@ ORDER BY
     dollars_earned_partnered DESC
 ;
 
+-- query 15: Find the number of games played across each stream; don't include Personal categories like Just Chatting.
+-- Look at the different genre categories.
+
+SELECT
+    streamer_name,
+    start_date,
+    game_name,
+    game_genre
+FROM
+    stream a 
+        join category b on (a.streamID = b.streamID)
+        join game c on (b.streamID = c.streamID)
+WHERE
+    category_name=game_name
+;
+
+-- query 16: Now rank each game according to the number of hours streamed
+SELECT
+    game_name,
+    sum(duration_in_hours) as total_duration
+FROM
+    category a
+        join game b on (a.streamID = b.streamID)
+group by
+    game_name
+order by
+    total_duration DESC
+;
+
+--query 17: Wow! How interesting! I wonder why Minecraft is the most streamed game?
+-- Anyways, now I want you to figure out if total hours streamed for a game correlates with their game rank!
+
+SELECT
+    game_name,
+    sum(duration_in_hours) as total_duration,
+    game_popularity_rank
+FROM
+    category a
+        join game b on (a.streamID = b.streamID)
+GROUP BY
+    game_name
+ORDER BY
+    game_popularity_rank
+;
+
+--query 18: Huh. I guess it kinda does. Create a query that adds the follower and subcriber count for each of the streams
+-- to the respective streamer. Make this a new column.
+
+SELECT
+    name,
+    follower_count,
+    subscriber_count
+    followers_gained,
+    subscribers_gained,
+    (follower_count + sum(followers_gained)) as new_follow_count,
+    (subscriber_count + sum(subscribers_gained)) as new_subscriber_count
+FROM
+    streamer a
+        join stream b on (a.name = b.streamer_name)
+GROUP BY
+    name, followers_gained, subscribers_gained
+;
+
+-- query 19: Now calculate the percent increase in follower/subscribers over these streams.
+
+with data_cte as (
+SELECT
+    name,
+    follower_count,
+    subscriber_count,
+    followers_gained,
+    subscribers_gained,
+    (follower_count + sum(followers_gained)) as new_follow_count,
+    (subscriber_count + sum(subscribers_gained)) as new_subscriber_count
+FROM
+    streamer a
+        join stream b on (a.name = b.streamer_name)
+GROUP BY
+    name, followers_gained, subscribers_gained
+)
+SELECT
+    name,
+    concat(format((100*new_follow_count/follower_count), 2), '%') as percent_followers_increased,
+    concat(format((100*new_subscriber_count/subscriber_count), 2), '%') as percent_subscibers_increased
+FROM
+    data_cte
+;
+
+-- query 20: Finally, find the number of unique message per number of chatters for each stream
+
+SELECT
+    streamer_name,
+    num_chatters,
+    unique_messages,
+    format((unique_messages/num_chatters),3) as upc
+FROM
+    stream a 
+        join chat b on (a.streamID = b.streamID)
+ORDER BY
+    upc
+;
+
+
 
 
 
