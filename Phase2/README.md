@@ -40,4 +40,4 @@ drive.google.com/video_project
 
 ## ER Diagram
 
-![erdiagram3](https://raw.githubusercontent.com/cmsc-vcu/202310-cmsc508-semester-project-cmsc508-202310-team-39/main/Phase2/real_final_erdiagam.jpg?token=GHSAT0AAAAAAB33B32XADE4C6DMQN6FGLHSY42MB2Q)
+![erdiagram3]([https://raw.githubusercontent.com/cmsc-vcu/202310-cmsc508-semester-project-cmsc508-202310-team-39/main/Phase2/real_final_erdiagam.jpg?token=GHSAT0AAAAAAB33B32XADE4C6DMQN6FGLHSY42MB2Q](https://raw.githubusercontent.com/cmsc-vcu/202310-cmsc508-semester-project-cmsc508-202310-team-39/main/Phase2/real_final_erdiagam.jpg?token=GHSAT0AAAAAAB33B32XVTUNPLGYSPWS34GQY42PCEQ))
