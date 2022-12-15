@@ -51,4 +51,40 @@ https://user-images.githubusercontent.com/80475070/207757306-c197da9c-2655-4c2c-
 
 ![real_final_erdiagam](https://user-images.githubusercontent.com/80475070/207744711-2b6a891d-cdb9-4385-8353-2cca9667f78f.jpg)
 
+## Translation of the ERD into the relational model as relational schemas
+
+* Relational Schemas:
+  - Streamer(name (varchar), follower_count (integer), subscriber_count(integer), account_creation_date(DateTime), partner_status(boolean))
+    -  Example Domain: xqc, 10,000,000, 50,000, 08/20/2016, True
+    -  Primary Keys and Foreign Keys: name, n/a
+    -  Constraints: name (primary key), follower_count/subscriber_count (check >= 0)
+  - Stream(streamer_name (varchar), title (varchar), avg_viewers (float), peak_viewers (integer), followers_gained (integer), subscribers_gained (integer), language (varchar), start_date(DateTime))
+    - Example Domain: pokimane, WELCOME TO THE STREAM, 70,000.234, 100,000, 10,000, 1,000, English, 10/14/2022)
+    - Primary Keys and Foreign Keys: {streamer_name, start_date}, streamer_name
+    - Constraints: {streamer_name, start_date} (primary key), streamer_name(foreign key), avg_viewers/peak_viewers/followers_gained/subscribers_gained (check >=0)
+  - Category(name (varchar), position (integer), avg_viewers (float), peak_viewers (integer), start_time (DateTime), duration_in_hours (integer))
+    - Example Domain: Just Chatting, 1, 70,000, 85,000, 10/14/2022 9:00:00 PM, 5
+    - Primary Keys and Foreign Keys: name, n/a
+    - Constraints: name (primary key), position(check >= 1), avg_viewers/peak_viewers/duration_in_hours (check >= 0)
+  - Game(game_name (integer), genre (varchar), total_current_viewers (integer), popularity_rank (integer))
+    - Minecraft, Adventure, 100,000, 4
+    - Primary Keys and Foreign Keys: game_name, n/a
+    - Constraints: game_name(primary key), total_current_viewers (check >= 0), popularity_rank(check>=1)
+  - Chat(chat_ID (integer), number_of_chatters (integer), unique_messages (integer))
+    - Example Domain: 1, 2,000, 4,000
+    - Primary Keys and Foreign Keys: chat_ID, n/a
+    - Constraints: chat_id(primary key), number_of_chatters/unique_messages (check >= 1)
+
+## Functional Dependencies
+
+* streamer_name -> follower_count, subscriber_count, account_creation_date, partner_status
+* streamer_name, start_date -> title, avg_viewers, peak_viewers, followers_gained, subscribers_gained, language
+* category_name ->  position, avg_category_viewers, peak_category_viewers, start_time, duration
+* game_name -> genre, total_current_game_viewers, popularity_rank
+* chat_ID -> number_of_chatters, unique_messages
+
+## Decomposition into BCNF Form
+
+Since all nonprime fields within the previously listed relational schema are dependent on their respective keys, decomposition of the relations into BCNF is not required. This can be proven via a brief overview of each of the entities described in this document. In the Streamer entity, follower_count, subscriber_count, account_creation_date, and partner_status are dependent on the Streamer's unique Twitch name. Each nonprime attribute solely relates to the Twitch name and do not relate to each other. When accessing one of a Streamer's Streams, you can access their stream title, avg_viewers, peak_viewers, language, start_date, followers_gained, and subscibers_gained with Twitch's API assuming you have the primary key of {streamer_name, start_date}. The same logic continues to apply for each relation in the relational schema.
+
 
