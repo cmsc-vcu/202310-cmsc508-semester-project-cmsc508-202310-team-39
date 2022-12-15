@@ -76,7 +76,7 @@ SELECT
     format(sum(lenNames) / count(name), 1) as avgChar
 FROM counter_cte;
 
--- query 7: What is the average number of acharacters on average in streamers' stream titles? 
+-- query 7: What is the average number of characters on average in streamers' stream titles? 
 -- Find the offset between the average and each streamer's title.
 
 
@@ -137,6 +137,7 @@ WHERE
     and start_date='2022-12-10 22:06:30'
 ;
 -- query 11: Now calculate the duration of each of xQc's streams
+
 SELECT
     streamer_name,
     start_date,
@@ -147,6 +148,54 @@ FROM
 GROUP by
     streamer_name, start_date
 ;
+
+-- query 12: Who gained the most subcribers and followers collectively in 1 stream?
+
+SELECT
+    streamer_name,
+    followers_gained,
+    subscribers_gained,
+    (followers_gained+subscribers_gained) as total_gained
+FROM
+    stream
+ORDER BY
+    total_gained DESC;
+
+-- query 13: There is a very big difference in the atmosphere of a chatroom that is just spamming the same 
+-- messages verses a chatroom with actual unique thought. Which streamer had the most unique chatters per average view_count?
+
+SELECT
+    streamer_name
+    avg_category_viewers,
+    unique_messages,
+    (unique_messages/avg_category_viewers) as unique_per_viewers
+FROM
+    stream a 
+        join category b on (a.streamID = b.streamID)
+        join chat c on (b.streamID = c.streamID)
+ORDER BY
+    unique_per_viewers DESC;
+
+-- query 14: Create a list of the amount of money each Twitch streamer made from subscriptions. Make sure that partnered streamers
+-- earn $3 for each subscription, and non-partnered streamers make $2.5.
+
+SELECT
+    name,
+    subscriber_count,
+    partner_status,
+    concat('$', ( CASE WHEN partner_status=1 THEN 3*subscriber_count ELSE 0 END) ) as dollars_earned_partnered,
+    concat('$', ( CASE WHEN partner_status=0 THEN 2.5*subscriber_count ELSE 0 END)) as dollars_earned_affiliate
+FROM
+    streamer
+ORDER BY
+    dollars_earned_partnered DESC
+;
+
+
+
+
+
+
     
     
 
