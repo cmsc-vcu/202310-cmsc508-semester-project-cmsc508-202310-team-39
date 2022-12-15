@@ -9,3 +9,7 @@
 | Blue Arevalo        | arevaloh@vcu.edu   | bluearevalo     |
 
 ## Description of structure of repository
+
+Phase1: contains our first implementation of the semester project, including our problem statement, er diagram, functional dependencies, sample data, and more
+Phase2: contains final implementation of semester project with SQL DDL and DMl files along with updated problem statement, functional dependencies, project presentation, link to website implementation, and more
+Requirements: details requirements for both phases
