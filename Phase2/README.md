@@ -22,6 +22,7 @@ Unfortunately, due to time constraints, we were unable to create a PHP website d
 * Which day was most commonly streamed?
 * Calculate the end_time for one of xQc's streams
 * Now calculate the duration of each of xQc's streams
+* Who gained the most followers collectively in one stream?
 * There is a very big difference in the atmosphere of a chatroom that is just spamming the same messages verses a chatroom with actual unique thought. Which streamer had the most unique chatters per average view_count?
 * Create a list of the amount of money each Twitch streamer made from subscriptions. Make sure that partnered streamers earn $3 for each subscription, and non-partnered streamers make $2.5.
 
